@@ -44,7 +44,7 @@ export default function WeatherView() {
       setRefresh(false);
     });
   };
-
+  
   const renderContent = () => {
     const filteredData = filterHourlyData(); // Récupérer les données filtrées
     return (
@@ -62,6 +62,8 @@ export default function WeatherView() {
           <FlatList
             data={filteredData}
             keyExtractor={(item, index) => index.toString()}
+            refreshing={refresh}
+            onRefresh={onReload}
             renderItem={({ item }) => <WeatherItem item={item} />}
           />
         )}
